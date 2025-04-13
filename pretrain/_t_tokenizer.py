@@ -2,23 +2,26 @@ from pathlib import Path
 from tokenizers import ByteLevelBPETokenizer
 from tokenizers.processors import BertProcessing
 
-def train_tokenizer(input_directory:str, 
-                    output_directory:str, output_name:str,
-                    input_format:str='txt',
+def train_tokenizer(output_directory:str, output_name:str,
+                    dataset=None,
+                    input_directory:str=None, input_format:str='txt',
                     vocab_size:int=50000, min_frequency:int=2,
-                    special_tokens:list=["<s>","<pad>","</s>","<unk>","<mask>"]):
+                    special_tokens:list=["<s>","<pad>","</s>","<unk>","<mask>"]) -> None:
     """
     Train BPE tokenizer
     Creates vocab.json which lists most frequent tokens ranked by frequency and merges.txt
     """
-    # Load training data
-    paths = [str(x) for x in Path(input_directory).glob(f"**/*.{input_format}")]
-
     # Initialize tokenizer
     tokenizer = ByteLevelBPETokenizer()
 
-    # Train tokenizer
-    tokenizer.train(files=paths, vocab_size=vocab_size, min_frequency=min_frequency, special_tokens= special_tokens)
+    # Load training data
+    if input_directory:
+        paths = [str(x) for x in Path(input_directory).glob(f"**/*.{input_format}")]
+        tokenizer.train(files=paths, vocab_size=vocab_size, min_frequency=min_frequency, special_tokens=special_tokens)
+
+    if dataset:
+        training_corpus = dataset['train']['text'] # might need to find out what the text portion is for each
+        tokenizer.train_from_iterator(training_corpus, vocab_size=vocab_size, min_frequency=min_frequency, special_tokens=special_tokens)
 
     # Save tokenizer
     tokenizer.save_model(output_directory, output_name)
