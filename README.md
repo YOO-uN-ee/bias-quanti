@@ -1,3 +1,11 @@
+Data Used for Pretraining
+| | Wikipedia | Book Corpus | CC |
+| --- | --- | --- | --- |
+| BERT | :checkmark: |  |  |
+| RoBERTa |  |  |  |
+| DeBERTa |  |  |  |
+| ModernBERT |  |  |  |
+
 Paper in work:
 https://www.overleaf.com/project/67f80a42dd01f0be58a20d16
 
