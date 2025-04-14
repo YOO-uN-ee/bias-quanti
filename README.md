@@ -16,9 +16,11 @@ Corpus:
 - [BookCorpus](https://huggingface.co/datasets/bookcorpus/bookcorpus)
 - [Wikipedia](https://huggingface.co/datasets/legacy-datasets/wikipedia)
 - [CommonCrawl](https://github.com/allenai/allennlp/discussions/5056)
+    - [CCNews (2016--2024)](https://huggingface.co/datasets/stanford-oval/ccnews)
+    - Roberta: September 2016 and February 2019
 - [Gigawords](https://huggingface.co/datasets/Harvard/gigaword/discussions)
     - https://www.tensorflow.org/datasets/catalog/gigaword
 - Clueweb
     - Cannot use due to access issue
-- [OpenWebText](https://github.com/jcpeterson/openwebtext)
-- Stories
+- [OpenWebText](https://github.com/jcpeterson/openwebtext) [HFOpenWebText](https://huggingface.co/datasets/Skylion007/openwebtext)
+- [Stories](https://huggingface.co/datasets/spacemanidol/cc-stories/tree/main)
